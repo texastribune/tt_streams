@@ -1,4 +1,5 @@
 from functools import wraps
+import random
 
 from django.test import TestCase
 
@@ -50,3 +51,25 @@ class BasicUsageTestCase(TestCase):
 
         for v in models.VideoItem.objects.all():
             self.assert_(v in stream.items.select_subclasses().all())
+
+
+class StoryItemTestCase(TestCase):
+    def test_syncs_title_on_save(self):
+        r = random.randint(1000, 2000)
+        stream = streams.StreamFactory.create()
+        story = factories.StoryFactory.create(title="Some Great Story %s" % r)
+        item = factories.StoryItemFactory.create(story=story, stream=stream)
+
+        self.assertEqual(item.title, story.title)
+
+    def test_signal_works_as_well(self):
+        r = random.randint(1000, 2000)
+        stream = streams.StreamFactory.create()
+        story = factories.StoryFactory.create(title="Some Great Story %s" % r)
+        item = factories.StoryItemFactory.create(story=story, stream=stream)
+
+        story.title = 'Some Other Great Story %d' % r
+        story.save()
+
+        item = models.StoryItem.objects.get(pk=item.pk)
+        self.assertEqual(item.title, story.title)

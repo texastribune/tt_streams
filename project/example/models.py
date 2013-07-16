@@ -1,9 +1,16 @@
 from tt_streams.models import Stream, StreamItem
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class StoryItem(StreamItem):
-    story = models.ForeignKey('Story')
+    story = models.ForeignKey('Story', related_name='stream_items')
+    title = models.CharField(max_length=250)
+
+    def save(self, *args, **kwargs):
+        self.title = self.story.title
+        return super(StoryItem, self).save(*args, **kwargs)
 
 
 class Story(models.Model):
@@ -26,3 +33,9 @@ class Video(models.Model):
 
     def __unicode__(self):
         return self.title
+
+
+@receiver(post_save, sender=Story)
+def update_story_item(sender, instance=None, **kwargs):
+    for item in instance.stream_items.all():
+        item.save()
