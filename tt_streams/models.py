@@ -9,8 +9,8 @@ class Stream(models.Model):
         return self.slug
 
 
-class Node(models.Model):
-    stream = models.ForeignKey(Stream, related_name='nodes')
+class StreamItem(models.Model):
+    stream = models.ForeignKey(Stream, related_name='items')
     pub_date = models.DateTimeField()
 
     objects = InheritanceManager()

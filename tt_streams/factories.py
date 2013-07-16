@@ -10,7 +10,7 @@ class StreamFactory(factory.django.DjangoModelFactory):
     FACTORY_FOR = models.Stream
 
 
-class NodeFactory(factory.django.DjangoModelFactory):
-    FACTORY_FOR = models.Node
+class StreamItemFactory(factory.django.DjangoModelFactory):
+    FACTORY_FOR = models.StreamItem
 
     pub_date = factory.LazyAttribute(lambda a: timezone.now())

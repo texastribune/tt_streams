@@ -9,13 +9,13 @@ class StoryFactory(factory.django.DjangoModelFactory):
     FACTORY_FOR = models.Story
 
 
-class StoryNodeFactory(factories.NodeFactory):
-    FACTORY_FOR = models.StoryNode
+class StoryItemFactory(factories.StreamItemFactory):
+    FACTORY_FOR = models.StoryItem
 
 
 class VideoFactory(factory.django.DjangoModelFactory):
     FACTORY_FOR = models.Video
 
 
-class VideoNodeFactory(factories.NodeFactory):
-    FACTORY_FOR = models.VideoNode
+class VideoItemFactory(factories.StreamItemFactory):
+    FACTORY_FOR = models.VideoItem
