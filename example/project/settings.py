@@ -126,7 +126,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 
     'tt_streams',
-    'example',
+    'app',
 )
 
 # A sample logging configuration. The only tangible logging
