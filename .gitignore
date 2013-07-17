@@ -3,6 +3,7 @@
 *.swp
 coverage/*
 build/*
-project/project.db
+example/project.db
 MANIFEST
 dist/
+.tox/

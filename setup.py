@@ -32,6 +32,9 @@ setup(
     author='Tribune Tech',
     author_email='tech@texastribune.org',
     url='https://github.com/texastribune/tt_streams/',
+    install_requires=[
+        "django-model-utils==1.4.0",
+    ],
     packages=packages,
     package_data={'tt_streams': data_files},
     classifiers=[
