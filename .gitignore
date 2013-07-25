@@ -7,3 +7,4 @@ example/project.db
 MANIFEST
 dist/
 .tox/
+*.egg-info/
