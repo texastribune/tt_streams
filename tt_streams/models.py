@@ -3,10 +3,12 @@ from model_utils.managers import InheritanceManager
 
 
 class Stream(models.Model):
+    name = models.CharField(max_length=250)
+    summary = models.TextField()
     slug = models.SlugField()
 
     def __unicode__(self):
-        return self.slug
+        return self.name
 
 
 class StreamItem(models.Model):
