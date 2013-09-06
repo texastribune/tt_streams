@@ -5,7 +5,7 @@ from model_utils.managers import InheritanceManager
 class Stream(models.Model):
     name = models.CharField(max_length=250)
     summary = models.TextField()
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
 
     def __unicode__(self):
         return self.name
