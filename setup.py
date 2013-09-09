@@ -27,7 +27,7 @@ for dirpath, dirnames, filenames in os.walk('tt_streams'):
 
 setup(
     name='tt_streams',
-    version='0.2.0',
+    version='0.3.0',
     description='Texas Tribune: tt_streams',
     author='Tribune Tech',
     author_email='tech@texastribune.org',
